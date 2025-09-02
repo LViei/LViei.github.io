@@ -1,0 +1,701 @@
+/* Variáveis CSS para cores e fontes */
+:root {
+    --primary-color: #0056b3; /* Azul escuro principal */
+    --secondary-color: #007bff; /* Azul claro para links e destaques */
+    --accent-color: #1e8449; /* Verde com melhor contraste (WCAG AA) */
+    --light-bg: #f8f9fa; /* Fundo muito claro */
+    --dark-text: #343a40; /* Texto escuro */
+    --light-text: #6c757d; /* Texto secundário */
+    --white: #ffffff;
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+}
+
+/* Reset básico e estilos globais */
+body {
+    font-family: var(--font-body);
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px; /* Ligeiramente mais largo que o anterior */
+    margin: 0 auto;
+    padding: 0 20px; /* Padding horizontal */
+}
+
+/* Link "Pular para o conteúdo" para acessibilidade */
+.skip-link {
+    position: absolute;
+    top: -100px; /* Escondido fora da tela */
+    left: 10px;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 10px 15px;
+    z-index: 1003; /* Acima de todos os elementos da navbar */
+    transition: top 0.3s ease-in-out;
+    border-radius: 0 0 5px 5px;
+}
+.skip-link:focus {
+    top: 0; /* Aparece quando focado */
+}
+
+/* --- Navbar --- */
+.navbar {
+    background-color: var(--white);
+    padding: 0px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1002; /* Elevado para ficar acima do overlay do menu (z-index: 1001) */
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-family: var(--font-heading);
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.navbar-brand img {
+    height: 40px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.navbar-menu {
+    display: flex;
+}
+
+.navbar-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.menu-toggle {
+    display: none; /* Escondido por padrão em telas grandes */
+}
+
+.nav-item {
+    margin-left: 30px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--dark-text);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--secondary-color);
+}
+
+/* Botão Loja Online na Navbar */
+.nav-btn-store {
+    background-color: var(--accent-color);
+    color: var(--white) !important; /* !important para sobrescrever a cor padrão do link */
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.nav-btn-store:hover {
+    background-color: #218838; /* Verde mais escuro no hover */
+    color: var(--white) !important;
+    transform: translateY(-2px);
+}
+
+/* Estilo de foco visível para acessibilidade por teclado */
+.nav-link:focus-visible,
+.btn:focus-visible,
+.footer-nav a:focus-visible,
+.social-icons a:focus-visible {
+    outline: 3px solid var(--secondary-color);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+    color: var(--white);
+    padding: 100px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before { /* Elemento para o efeito visual de fundo */
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    transform: rotate(45deg);
+}
+.hero-section::after { /* Elemento para o efeito visual de fundo */
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 300px;
+    height: 300px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    transform: rotate(-30deg);
+}
+
+.hero-section h1 {
+    font-family: var(--font-heading);
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.hero-section p {
+    font-size: 1.4em;
+    max-width: 900px;
+    margin: 0 auto 30px;
+    opacity: 0.9;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--white);
+    padding: 15px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    background-color: #218838; /* Um verde um pouco mais escuro no hover */
+    transform: translateY(-2px);
+}
+
+/* --- Seções de Conteúdo --- */
+section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+section:nth-of-type(even) { /* Fundo mais claro para seções alternadas */
+    background-color: var(--light-bg);
+}
+
+h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block; /* Para o after ficar centralizado com o texto */
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+/* --- Seção Nossos Serviços --- */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.service-item {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.service-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.service-item i {
+    font-size: 3.5em;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+.service-item h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.service-item p {
+    color: var(--light-text);
+}
+
+/* --- Seção Nosso Diferencial --- */
+.differential-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    text-align: left;
+    margin-top: 40px;
+    flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+}
+
+.differential-text {
+    flex: 1;
+    min-width: 300px; /* Garante que o texto não fique muito pequeno */
+}
+
+.differential-text h3 {
+    font-family: var(--font-heading);
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center; /* Centraliza o h3 dentro da div flex */
+}
+
+.differential-text p {
+    font-size: 1.1em;
+    color: var(--dark-text);
+    margin-bottom: 15px;
+}
+
+.differential-highlight {
+    font-weight: 700;
+    color: var(--accent-color);
+    font-size: 1.2em;
+    display: block;
+    margin-top: 20px;
+}
+
+.differential-image {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px; /* Limita o tamanho da imagem */
+    text-align: center;
+}
+
+.differential-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Seção Quem Atendemos --- */
+.audience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.audience-item {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    border: 1px solid #e0e0e0;
+}
+
+.audience-item i {
+    font-size: 3.5em;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+.audience-item h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* --- Call to Action Final --- */
+.cta-section {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    padding: 80px 20px;
+    text-align: center;
+    border-radius: 12px;
+    margin: 60px auto;
+    max-width: 90%; /* Para não ocupar a largura total do container */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.cta-section h2 {
+    color: var(--white);
+    font-size: 2.8em;
+    margin-bottom: 25px;
+}
+.cta-section h2::after {
+    background-color: var(--white);
+}
+
+.cta-section p {
+    font-size: 1.3em;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--dark-text);
+    color: var(--white);
+    padding: 40px 0;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-logo {
+    font-family: var(--font-heading);
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+    margin-bottom: 15px; /* Para mobile */
+}
+
+.footer-nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 15px; /* Para mobile */
+}
+
+.footer-nav li {
+    margin: 0 15px;
+}
+
+.footer-nav a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+    color: var(--secondary-color);
+}
+
+.social-icons {
+    margin-bottom: 15px; /* Para mobile */
+}
+
+.social-icons a {
+    color: var(--white);
+    font-size: 1.5em;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--secondary-color);
+}
+
+.copyright {
+    width: 100%;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+
+/* --- Responsividade --- */
+@media (max-width: 992px) {
+    .hero-section h1 {
+        font-size: 2.8em;
+    }
+    .hero-section p {
+        font-size: 1.2em;
+    }
+    h2 {
+        font-size: 2em;
+    }
+    .differential-content {
+        flex-direction: column;
+    }
+    .differential-text, .differential-image {
+        min-width: unset;
+        max-width: 100%;
+        text-align: center;
+    }
+    .differential-text h3 {
+        text-align: center;
+    }
+    .footer-content {
+        flex-direction: column;
+    }
+    .footer-nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .footer-nav li {
+        margin: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 80px 15px;
+    }
+
+    /* --- Estilos do Menu Hambúrguer --- */
+    .navbar .container {
+        position: relative;
+        justify-content: center;
+    }
+
+    .menu-toggle {
+        display: block; /* Mostra o botão em telas pequenas */
+        background: none;
+        border: none;
+        font-size: 1.8em;
+        color: var(--primary-color);
+        cursor: pointer;
+        position: absolute;
+        left: 10px; /* Alinha com o padding do container (20px) */
+        z-index: 1003; /* Garante que fique acima do menu e do overlay */
+    }
+
+    .navbar-menu {
+        position: fixed; /* Fica fixo na tela */
+        top: 0;
+        left: 0;
+        width: 280px; /* Largura do menu lateral */
+        height: 100vh; /* Altura total da tela */
+        background-color: var(--white);
+        box-shadow: 4px 0 15px rgba(0,0,0,0.15);
+        transform: translateX(-100%); /* Escondido para a esquerda */
+        transition: transform 0.3s ease-in-out;
+        z-index: 1002; /* Acima do overlay */
+        padding-top: 60px; /* Espaço para o conteúdo não ficar colado no topo */
+    }
+
+    .navbar-menu.active {
+        transform: translateX(0); /* Mostra o menu */
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start; /* Alinha itens à esquerda */
+        padding: 20px;
+    }
+
+    .nav-item { margin: 10px 0; }
+    .hero-section h1 {
+        font-size: 2.2em;
+    }
+    .hero-section p {
+        font-size: 1em;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    .services-grid, .audience-grid {
+        grid-template-columns: 1fr;
+    }
+    .service-item, .audience-item {
+        padding: 20px;
+    }
+    .cta-section {
+        padding: 50px 15px;
+    }
+    .cta-section h2 {
+        font-size: 2em;
+    }
+    .cta-section p {
+        font-size: 1em;
+    }
+
+    /* Estilos para o overlay do menu */
+    .menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1001; /* Abaixo do menu, acima do conteúdo */
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    }
+    .menu-overlay.active { opacity: 1; visibility: visible; }
+
+    /* Impede o scroll do body quando o menu está aberto */
+    body.menu-open { overflow: hidden; }
+}
+
+/* =================================
+   Seção de Avaliações (Testimonials)
+   ================================= */
+#avaliacoes {
+    padding: 80px 0;
+    background-color: #f8f9fa; /* Um fundo levemente diferente para destacar a seção */
+}
+
+#avaliacoes h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: var(--dark-color, #343a40);
+}
+
+#avaliacoes > .container > p {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 50px auto;
+    color: var(--text-color, #6c757d);
+    font-size: 1.1em;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.review-item {
+    background-color: var(--white, #fff);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+    border-top: 4px solid var(--primary-color, #007bff);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+}
+
+.review-author {
+    font-weight: 700;
+    font-size: 1.1em;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--dark-color, #333);
+}
+
+.review-stars {
+    color: #ffc107; /* Cor de estrela (amarelo) */
+}
+
+.review-stars i {
+    margin-left: 2px;
+}
+
+.review-text {
+    font-style: italic;
+    color: #555;
+    line-height: 1.7;
+    margin: 0;
+    flex-grow: 1; /* Garante que o texto ocupe o espaço disponível */
+}
+
+.review-text::before {
+    content: '“';
+    font-size: 2.5em;
+    color: var(--primary-color, #007bff);
+    opacity: 0.5;
+    font-weight: 700;
+    margin-right: 5px;
+    vertical-align: -15px;
+    line-height: 0;
+}
+
+.google-reviews-link {
+    text-align: center;
+}
+
+/* Estilos para harmonizar os logos dos parceiros */
+#parceiros .partners-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+#parceiros .partner-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px; /* Altura fixa para os contêineres */
+    width: 180px;  /* Largura fixa para os contêineres */
+    padding: 1rem;
+    background-color: #fff; /* Fundo branco para consistência */
+    border: 1px solid #eee; /* Borda sutil */
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default; /* Remove o cursor de link, mas mantém o hover */
+}
+
+#parceiros .partner-logo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#parceiros .partner-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Garante que a imagem caiba sem distorcer */
+}
